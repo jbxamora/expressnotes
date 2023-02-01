@@ -105,3 +105,6 @@ dist
 
 #ds store
 .DS_Store
+
+#dotenv
+.env
