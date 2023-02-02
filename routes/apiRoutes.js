@@ -10,19 +10,19 @@ const dbPath = path.join(__dirname, "..", "db", "db.json");
 
 // Route for retreiving all notes from database
 app.get('/notes', (req, res) => {
-   fs.readFile(dbPath, "utf-8", (err,data) => {
-    if (err) {
-        return res.status(500).send("Error reading database");
-    };
+    fs.readFile(dbPath, "utf-8", (err, data) => {
+        if (err) {
+            return res.status(500).send("Error reading database");
+        };
 
-    let db;
-    try {
-        db = JSON.parse(data); 
-    } catch (err) {
-        return res.status(500).send("Error parsing database");
-    }
-    res.json(db);
-   });
+        let db;
+        try {
+            db = JSON.parse(data);
+        } catch (err) {
+            return res.status(500).send("Error parsing database");
+        }
+        res.json(db);
+    });
 });
 
 // Route for adding a new note to database
@@ -33,7 +33,7 @@ app.post('/notes', (req, res) => {
     if (!title || !text) {
         return res.status(400).send("Title and text are required fields");
     }
-    
+
     fs.writeFileSync(dbPath, "utf-8", (err, data) => {
         if (err) {
             return res.status(500).send("Error reading database");
@@ -64,7 +64,7 @@ app.post('/notes', (req, res) => {
 
 // Route for deleting a note from the database
 app.delete('/notes/:id', (req, res) => {
-    fs.readFile(dbPath, "utf-8", (err,data) => {
+    fs.readFile(dbPath, "utf-8", (err, data) => {
         if (err) {
             return.res.status(500).send("Error reading database");
         }
