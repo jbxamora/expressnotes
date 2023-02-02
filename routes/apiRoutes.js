@@ -2,7 +2,7 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
-const uuidv4 = reqiure("uuid/v4");
+const uuidv4 = require("uuid");
 // Create an express router
 const app = require("express").Router();
 // Create path to database file
@@ -34,7 +34,7 @@ app.post('/notes', (req, res) => {
         return res.status(400).send("Title and text are required fields");
     }
 
-    fs.writeFileSync(dbPath, "utf-8", (err, data) => {
+    fs.writeFile(dbPath, "utf-8", (err, data) => {
         if (err) {
             return res.status(500).send("Error reading database");
         }
@@ -66,14 +66,14 @@ app.post('/notes', (req, res) => {
 app.delete('/notes/:id', (req, res) => {
     fs.readFile(dbPath, "utf-8", (err, data) => {
         if (err) {
-            return.res.status(500).send("Error reading database");
+            return res.status(500).send("Error reading database");
         }
 
         let db;
         try {
             db = JSON.parse(data);
         } catch (err) {
-            return.res.status(500).send("Error parsing database");
+            return res.status(500).send("Error parsing database");
         }
         // Filter notes to keep those with ID other than one to be deleted
         const id = req.params.id;
