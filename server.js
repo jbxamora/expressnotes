@@ -18,43 +18,43 @@ const app = express();
 // Sets middleware
 // app.use(helmet());
 // app.use(logger('tiny'));
-app.use(express.static('public'));
 
 // Parse incoming request data
 app.use(express.json());
 app.use(express.urlencoded({ extended:true }));
 
-// Server static files
+// Serve static files // Content type
+app.use(express.static('public'));
 // app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/js/index.js', (req, res) => {
-    res.set('Content-Type', "text/javascript");
-    res.sendFile(path.join(__dirname, "/public/js/index.js"));
-});
+// app.get('/js/index.js', (req, res) => {
+//     res.set('Content-Type', "text/javascript");
+//     res.sendFile(path.join(__dirname, "/public/js/index.js"));
+// });
 
 
-app.get('', (req, res) => {
-    res.set('Content-Type', "text/css");
-    res.sendFile(path.join(__dirname, "/public/css/styles.css"));
-});
+// app.get('', (req, res) => {
+//     res.set('Content-Type', "text/css");
+//     res.sendFile(path.join(__dirname, "/public/css/styles.css"));
+// });
 
 
-app.use((req, res, next) => {
-    res.set('Cross-Origin-Resource-Policy', 'same-site');
-    next();
-});
+// app.use((req, res, next) => {
+//     res.set('Cross-Origin-Resource-Policy', 'same-site');
+//     next();
+// });
 
 // Mount routes
 app.use("/api", apiRoutes);
 app.use("/", htmlRoutes);
 
 // Error handling
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send("Something went wrong!");
-});
+// app.use((err, req, res, next) => {
+//     console.error(err.stack);
+//     res.status(500).send("Something went wrong!");
+// });
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3001;
 // Starts server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
