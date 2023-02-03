@@ -29,20 +29,20 @@ app.use(express.urlencoded({ extended:true }));
 
 app.get('/js/index.js', (req, res) => {
     res.set('Content-Type', "text/javascript");
-    res.sendFile(path.join(__dirname, "./public/js/index.js"));
+    res.sendFile(path.join(__dirname, "/public/js/index.js"));
 });
 
 
 app.get('', (req, res) => {
     res.set('Content-Type', "text/css");
-    res.sendFile(path.join(__dirname, "./public/css/styles.css"));
+    res.sendFile(path.join(__dirname, "/public/css/styles.css"));
 });
 
 
-// app.use((req, res, next) => {
-//     res.set('Cross-Origin-Resource-Policy', 'same-site');
-//     next();
-// });
+app.use((req, res, next) => {
+    res.set('Cross-Origin-Resource-Policy', 'same-site');
+    next();
+});
 
 // Mount routes
 app.use("/api", apiRoutes);
