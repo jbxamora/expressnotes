@@ -34,7 +34,7 @@ app.post('/notes', (req, res) => {
         return res.status(400).send("Title and text are required fields");
     }
 
-    fs.writeFile(dbPath, "utf-8", (err, data) => {
+    fs.readFile(dbPath, "utf-8", (err, data) => {
         if (err) {
             return res.status(500).send("Error reading database");
         }
@@ -57,7 +57,7 @@ app.post('/notes', (req, res) => {
             if (err) {
                 return res.status(500).send("Error writing database");
             }
-            res.json(db); // Sends updated database in JSON
+            res.json(newNote); // Sends updated database in JSON
         });
     });
 });
@@ -77,7 +77,7 @@ app.delete('/notes/:id', (req, res) => {
         }
         // Filter notes to keep those with ID other than one to be deleted
         const id = req.params.id;
-        const notesToKeep = db.filter((note) => note.id !== id);
+        const notesToKeep = db.filter((note) => note.id != id);
         // If the length of notesToKeep is equal to original notes, it means the note to delete was not found and will display that error
         if (notesToKeep.length === db.length) {
             return res.status(404).send("Note not found");
