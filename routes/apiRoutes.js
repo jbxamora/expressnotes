@@ -2,7 +2,7 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
-const uuidv4 = require("uuid");
+const { v4: uuid } = require('uuid');
 // Create an express router
 const app = require("express").Router();
 // Create path to database file
@@ -47,7 +47,7 @@ app.post('/notes', (req, res) => {
         }
 
         const newNote = {
-            id: uuidv4(), // Generate a unique ID for new note
+            id: uuid(), // Generate a unique ID for new note
             title: title,
             text: text,
         };
