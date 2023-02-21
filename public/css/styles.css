@@ -1,9 +1,16 @@
-html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: #282c34;
+  color: #dcdcdc;
 }
+
+nav {
+  border-bottom-left-radius: 10px;
+  overflow: hidden;
+}
+
 
 .save-note {
   display: none;
@@ -18,22 +25,26 @@ body {
 
 .note-textarea,
 .note-title {
-  color: #000000;
+  color: #dcdcdc;
   width: 100%;
   outline: none;
   border: none;
+  background-color: #282c34;
 }
 
 .note-textarea {
   resize: none;
   height: calc(100% - 63px);
   padding-top: 15px;
+  border-top: 1px solid #333;
 }
 
 .note-title {
   height: 50px;
   margin-top: 13px;
   font-size: 3rem;
+  background-color: #282c34;
+  border-bottom: 1px solid #333;
 }
 
 .note-title:read-only,
@@ -46,6 +57,8 @@ body {
   border-bottom: none;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+  background-color: #282c34;
+  color: #dcdcdc;
 }
 
 .list-container {
@@ -58,6 +71,8 @@ body {
   border-top: none;
   border-top-right-radius: 0;
   border-top-left-radius: 0;
+  background-color: #282c34;
+  color: #dcdcdc;
 }
 
 .list-item-title {
@@ -68,6 +83,7 @@ body {
 .list-container i {
   font-size: 1.1rem;
   cursor: pointer;
+  color: #dcdcdc;
 }
 
 .list-container .list-group-item {
@@ -75,4 +91,11 @@ body {
   border-right: none;
   padding: 20px;
   cursor: pointer;
+  border-top: 1px solid #333;
 }
+
+ .list-group-item {
+  background-color: #282c34;
+  color: #dcdcdc;
+}
+
