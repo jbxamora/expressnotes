@@ -1,6 +1,6 @@
-# Note Taker
+# expressnotes
 
-Note Taker is a simple web application for creating, storing, and managing notes. Built with Express and Node.js, it allows users to quickly write down and save their thoughts and ideas.
+expressnotes is a simple web application for creating, storing, and managing notes. Built with Express and Node.js, it allows users to quickly write down and save their thoughts and ideas.
 ## User Story
 
 ```md
